@@ -20,6 +20,9 @@ public:
 
     void change_slave_status(int &slave_idx, std::string &status);
 
+private slots:
+    void on_set_status_btn_clicked();
+
 private:
     Ui::MainWindow *ui;
     int work_count_ethernet;
