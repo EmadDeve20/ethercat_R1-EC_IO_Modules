@@ -1,6 +1,7 @@
 # This file is used to ignore files which are generated
 # ----------------------------------------------------------------------------
 
+build-ethercat_R1-EC_IO_Modules-Desktop-Debug
 *~
 *.autosave
 *.a
