@@ -15,7 +15,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::change_slave_status(int &slave_idx, std::string &status)
 {
-   ec_send_processdata();
    if (status == "INIT")
    {
         ec_slave[slave_idx].state = EC_STATE_INIT;
@@ -43,9 +42,6 @@ void MainWindow::change_slave_status(int &slave_idx, std::string &status)
         ec_writestate(slave_idx);
         return;
    }
-
-    work_count_ethernet += ec_receive_processdata(EC_TIMEOUTRET);
-
 }
 
 void MainWindow::on_set_status_btn_clicked()
