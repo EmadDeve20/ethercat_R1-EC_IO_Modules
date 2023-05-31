@@ -12,7 +12,6 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     bool ifname_is_ok;
-       // Ask for birth date as a string.
     QString ifname = QInputDialog::getText(0, "Input dialog",
                                             "set ifname:", QLineEdit::Normal,
                                             "", &ifname_is_ok);
