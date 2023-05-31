@@ -29,5 +29,6 @@ private slots:
 private:
     Ui::MainWindow *ui;
     int work_count_ethernet;
+    void get_slaves_name_and_update_slaves_combobox();
 };
 #endif // MAINWINDOW_H
