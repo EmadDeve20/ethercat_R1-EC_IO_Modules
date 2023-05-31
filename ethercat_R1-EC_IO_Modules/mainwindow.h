@@ -3,6 +3,9 @@
 
 #include <QMainWindow>
 
+//soem
+#include <ethercat.h>
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -15,7 +18,10 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    void change_slave_status(int &slave_idx, std::string &status);
+
 private:
     Ui::MainWindow *ui;
+    int work_count_ethernet;
 };
 #endif // MAINWINDOW_H
