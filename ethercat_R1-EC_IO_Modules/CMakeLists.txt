@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.5)
 
 project(ethercat_R1-EC_IO_Modules VERSION 0.1 LANGUAGES CXX)
+add_subdirectory(SOEM)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -44,7 +45,7 @@ else()
     endif()
 endif()
 
-target_link_libraries(ethercat_R1-EC_IO_Modules PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(ethercat_R1-EC_IO_Modules PRIVATE Qt${QT_VERSION_MAJOR}::Widgets soem)
 
 set_target_properties(ethercat_R1-EC_IO_Modules PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
