@@ -19,24 +19,28 @@ void MainWindow::change_slave_status(int &slave_idx, std::string &status)
    if (status == "INIT")
    {
         ec_slave[slave_idx].state = EC_STATE_INIT;
+        ec_writestate(slave_idx);
         return;
    }
 
    if (status == "Pre-Operational")
    {
         ec_slave[slave_idx].state = EC_STATE_PRE_OP;
+        ec_writestate(slave_idx);
         return;
    }
 
    if (status == "Safe-Operational")
    {
         ec_slave[slave_idx].state = EC_STATE_SAFE_OP;
+        ec_writestate(slave_idx);
         return;
    }
 
    if (status == "Operational")
    {
         ec_slave[slave_idx].state = EC_STATE_OPERATIONAL;
+        ec_writestate(slave_idx);
         return;
    }
 
