@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTimer>
 
 //soem
 #include <ethercat.h>
@@ -17,6 +18,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    QTimer *timer;
 
     void change_slave_status(int &slave_idx, std::string &status);
 
