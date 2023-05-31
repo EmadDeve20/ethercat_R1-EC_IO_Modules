@@ -7,6 +7,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    get_slaves_name_and_update_slaves_combobox();
+
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(update_master_status_label()));
     timer->start(1);
@@ -90,6 +92,15 @@ void MainWindow::update_master_status_label()
         case EC_STATE_OPERATIONAL + EC_STATE_ERROR:
           ui->master_status_lbl->setText("OPERATIONAL - ERROR");
           break;
+    }
+}
+
+void MainWindow::get_slaves_name_and_update_slaves_combobox()
+{
+    for (int i = 0; i < ec_slavecount; i++)
+    {
+        QString slave_name = ec_slave[i+1].name;
+        ui->slave_to_set_status_combo->addItem(slave_name);
     }
 }
 
