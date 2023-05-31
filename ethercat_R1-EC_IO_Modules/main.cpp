@@ -22,15 +22,15 @@ int main(int argc, char *argv[])
         w.show();
         return a.exec();
     }
-    else if (!ifname_is_ok)
+    else if (ifname_is_ok && ifname.length() == 0)
     {
         QMessageBox messageBox;
         messageBox.critical(0,"Error","Please set your ifname");
         messageBox.setFixedSize(500,200);
     }
-    else
+    else if(ifname_is_ok && ifname.length() > 0)
     {   QMessageBox messageBox;
-        messageBox.critical(0,"Error","Can not connect with your ifname! Try with sudo");
+        messageBox.critical(0,"Error","Can not connect with your ifname! Try run  it with sudo");
         messageBox.setFixedSize(500,200);
 
         return 1;
