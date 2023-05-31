@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
                                             "set ifname:", QLineEdit::Normal,
                                             "", &ifname_is_ok);
 
-    if (ifname_is_ok && ec_init(ifname.toStdString().c_str()))
+    if ((ifname_is_ok && ec_init(ifname.toStdString().c_str())) && (ec_config_init(FALSE)) > 1)
     {
         MainWindow w;
         w.show();
