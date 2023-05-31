@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(update_master_status_label()));
-    timer->start(100);
+    timer->start(1);
 }
 
 MainWindow::~MainWindow()
@@ -54,5 +54,42 @@ void MainWindow::on_set_status_btn_clicked()
     std::string status =  ui->status_combo->currentText().toStdString();
 
     change_slave_status(slave_idx, status);
+}
+
+void MainWindow::update_master_status_label()
+{
+    switch (ec_slave[0].state)
+    {
+        case EC_STATE_NONE:
+          ui->master_status_lbl->setText("NONE");
+          break;
+        case EC_STATE_INIT:
+          ui->master_status_lbl->setText("INIT");
+          break;
+        case EC_STATE_PRE_OP:
+          ui->master_status_lbl->setText("PRE_OP");
+          break;
+        case EC_STATE_BOOT:
+          ui->master_status_lbl->setText("BOOT");
+          break;
+        case EC_STATE_SAFE_OP:
+          ui->master_status_lbl->setText("SAFE_OP");
+          break;
+        case EC_STATE_OPERATIONAL:
+          ui->master_status_lbl->setText("OPERATIONAL");
+          break;
+        case EC_STATE_ACK:
+          ui->master_status_lbl->setText("EC_STATE_ACK");
+          break;
+        case EC_STATE_PRE_OP + EC_STATE_ERROR:
+          ui->master_status_lbl->setText("PRE_OP - ERROR");
+          break;
+        case EC_STATE_SAFE_OP + EC_STATE_ERROR:
+          ui->master_status_lbl->setText("SAFE_OP - ERROR");
+          break;
+        case EC_STATE_OPERATIONAL + EC_STATE_ERROR:
+          ui->master_status_lbl->setText("OPERATIONAL - ERROR");
+          break;
+    }
 }
 

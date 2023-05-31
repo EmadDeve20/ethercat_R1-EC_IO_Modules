@@ -24,6 +24,7 @@ public:
 
 private slots:
     void on_set_status_btn_clicked();
+    void update_master_status_label();
 
 private:
     Ui::MainWindow *ui;
