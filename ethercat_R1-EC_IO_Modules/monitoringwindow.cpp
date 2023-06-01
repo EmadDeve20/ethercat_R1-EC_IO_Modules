@@ -9,17 +9,6 @@ MonitoringWindow::MonitoringWindow(QWidget *parent) :
 
     ui->tableWidget->setRowCount(ec_slavecount);
 
-//    for (auto r = 0; r < ui->tableWidget->rowCount(); r++)
-//    {
-//        ui->tableWidget->setItem(r, 0, new QTableWidgetItem(tr(ec_slave[r+1].name)));
-
-//        //TODO: Fix it To Show Status
-//        for (auto c = 1; ui->tableWidget->columnCount(); c++)
-//        {
-//            ui->tableWidget->setItem(r, c, new QTableWidgetItem(tr("NONE")));
-//        }
-//    }
-
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(update_status_table()));
     timer->start(1);
