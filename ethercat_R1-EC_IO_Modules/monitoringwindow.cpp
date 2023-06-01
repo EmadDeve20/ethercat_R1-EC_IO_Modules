@@ -6,6 +6,8 @@ MonitoringWindow::MonitoringWindow(QWidget *parent) :
     ui(new Ui::MonitoringWindow)
 {
     ui->setupUi(this);
+
+    ui->tableWidget->setRowCount(ec_slavecount);
 }
 
 MonitoringWindow::~MonitoringWindow()
