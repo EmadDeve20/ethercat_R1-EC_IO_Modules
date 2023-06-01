@@ -3,6 +3,9 @@
 
 #include <QMainWindow>
 
+// soem
+#include <ethercat.h>
+
 namespace Ui {
 class MonitoringWindow;
 }
