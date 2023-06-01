@@ -2,6 +2,7 @@
 #define MONITORINGWINDOW_H
 
 #include <QMainWindow>
+#include <QTimer>
 
 // soem
 #include <ethercat.h>
@@ -17,6 +18,10 @@ class MonitoringWindow : public QMainWindow
 public:
     explicit MonitoringWindow(QWidget *parent = nullptr);
     ~MonitoringWindow();
+    QTimer *timer;
+
+private slots:
+    void update_status_table();
 
 private:
     Ui::MonitoringWindow *ui;
