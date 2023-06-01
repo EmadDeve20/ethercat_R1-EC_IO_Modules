@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 
+#include "monitoringwindow.h"
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -12,6 +14,10 @@ MainWindow::MainWindow(QWidget *parent)
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(update_master_status_label()));
     timer->start(1);
+
+    // open MonitoringWindow
+    MonitoringWindow *monitoring_window = new MonitoringWindow(this);
+    connect(ui->menuMonitoring, SIGNAL(aboutToShow()), monitoring_window, SLOT(show()));
 }
 
 MainWindow::~MainWindow()
