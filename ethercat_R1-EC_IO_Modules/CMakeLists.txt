@@ -12,8 +12,8 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
+find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets Network REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets  Network REQUIRED)
 
 set(PROJECT_SOURCES
         main.cpp
@@ -50,7 +50,7 @@ else()
     endif()
 endif()
 
-target_link_libraries(ethercat_R1-EC_IO_Modules PRIVATE Qt${QT_VERSION_MAJOR}::Widgets soem)
+target_link_libraries(ethercat_R1-EC_IO_Modules PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Network soem)
 
 set_target_properties(ethercat_R1-EC_IO_Modules PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
