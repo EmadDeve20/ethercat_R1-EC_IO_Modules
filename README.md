@@ -29,4 +29,4 @@ then you will see a window to get your own ethernet interface so select your int
 
 ![input_ifname_dialog](./img/input_ifname_window.png)
 
-if you select your current interface and everything is ok, the main window will show.
+if you select the correct ethernet interface and everything is ok, the main window will show.
