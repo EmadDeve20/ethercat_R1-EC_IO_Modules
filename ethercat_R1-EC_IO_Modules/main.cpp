@@ -3,6 +3,7 @@
 #include <QApplication>
 #include <QInputDialog>
 #include <QMessageBox>
+#include <QtNetwork/QNetworkInterface>
 
 //SOEM
 #include "ethercat.h"
@@ -11,10 +12,22 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
+    QList<QNetworkInterface> all_ethernet_interface = QNetworkInterface::allInterfaces();
+
+    QStringList defualt_ethernet_interfaces;
+
+    foreach(QNetworkInterface ethernet_interface, all_ethernet_interface)
+    {
+        if (ethernet_interface.type() == QNetworkInterface::Ethernet)
+        {
+            defualt_ethernet_interfaces << ethernet_interface.humanReadableName();
+        }
+    }
+
+
     bool ifname_is_ok;
-    QString ifname = QInputDialog::getText(0, "Input dialog",
-                                            "set ifname:", QLineEdit::Normal,
-                                            "", &ifname_is_ok);
+    QString ifname = QInputDialog::getItem(0, "Select Your Ethernet Interface", "ifname",
+                                           defualt_ethernet_interfaces, 0, true, &ifname_is_ok);
 
     if ((ifname_is_ok && ec_init(ifname.toStdString().c_str())) && (ec_config_init(FALSE)) > 1)
     {
@@ -35,7 +48,5 @@ int main(int argc, char *argv[])
 
         return 1;
     }
-
-
 
 }
