@@ -6,6 +6,7 @@ build-ethercat_R1-EC_IO_Modules-Desktop-Release/
 build-ethercat_R1-EC_IO_Modules-Desktop-Debug/
 build/
 
+ethercat_R1-EC_IO_Modules/CMakeLists.txt.user
 *~
 *.autosave
 *.a
